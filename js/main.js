@@ -26,8 +26,6 @@ contact.onclick = () => {
 /*  スライダー */
 const swiper = new Swiper('.swiper', {
     loop: true,
-    // spaceBetween: 60,
-    // slidesPerView: 3.5,
     centeredSlides: true,
 
     slidesPerView: 1.3,
@@ -38,14 +36,9 @@ const swiper = new Swiper('.swiper', {
             slidesPerView: 3.5,
         }
     }
-    // initialSlide: 1,
-    // breakpoints: {
-    //     600: {
-    //     },
-    // }
 });
 
-/*  intersectionObserver */
+/*  フェード表示  */
 
 const items = document.querySelectorAll('.item');
 const option = {
@@ -73,30 +66,20 @@ const smoothScrollTrigger = document.querySelectorAll('a[href^="#"]');
 for (let i = 0; i < smoothScrollTrigger.length; i++) {
     smoothScrollTrigger[i].addEventListener('click', (e) => {
         
-        // 3. ターゲットの位置を取得
         e.preventDefault();
         let href = smoothScrollTrigger[i].getAttribute('href');
-        console.log(href)
-        // 各a要素のリンク先を取得
-        let targetElement = document.getElementById(href.replace('#', '')); // リンク先の要素（コンテンツ）を取得
-        console.log(targetElement)
+        
+        let targetElement = document.getElementById(href.replace('#', '')); 
         
         const rect = targetElement.getBoundingClientRect().top;
-        console.log(rect)
-         // ブラウザからの高さを取得
+        
         const offset = window.pageYOffset;
-        console.log(offset)
-         // 現在のスクロール量を取得
-        const gap = 80; // 固定ヘッダー分の高さ
+        const gap = 80; 
         const target = rect + offset - gap; 
-        //最終的な位置を割り出す
 
-        // // 4. スムースにスクロール
         window.scrollTo({
             top: target,
             behavior: 'smooth',
         });
-
     });
-
 }

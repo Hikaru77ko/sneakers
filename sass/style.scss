@@ -191,6 +191,13 @@ feature
     opacity: 0;
 }
 
+.item-img {
+    height: 257px;
+    img {
+        width: 100%;
+    }
+}
+
 .show {
     opacity: 1;
     transform: translateY(0px);
